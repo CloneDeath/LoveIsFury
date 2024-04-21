@@ -33,11 +33,9 @@ func _gui_input(event):
 	if (event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT):
 		_end = event.position;
 		_clamp();
-		print(vector);
 	if (event is InputEventMouseMotion and event.button_mask & MOUSE_BUTTON_LEFT):
 		_end = event.position;
 		_clamp();
-		print(vector);
 
 func _process(delta):
 	_start = size / 2;

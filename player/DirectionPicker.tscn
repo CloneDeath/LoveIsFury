@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b15ntxi042cgp"]
+
+[ext_resource type="Script" path="res://player/DirectionPicker.gd" id="1_un8jx"]
+
+[sub_resource type="Curve" id="Curve_ns5am"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.120879), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="DirectionPicker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_un8jx")
+
+[node name="Pointer" type="Line2D" parent="."]
+points = PackedVector2Array(143, 216, 189, 128)
+width = 5.0
+width_curve = SubResource("Curve_ns5am")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

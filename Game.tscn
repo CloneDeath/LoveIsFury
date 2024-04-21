@@ -26,6 +26,6 @@ player = NodePath("../../DynamicEntities/Player")
 [node name="DynamicEntities" type="Node2D" parent="."]
 
 [node name="Player" parent="DynamicEntities" instance=ExtResource("2_ypbkg")]
-position = Vector2(34, 101)
+position = Vector2(32, 112)
 
 [connection signal="advance_time" from="Camera2D/PlayerController" to="." method="_on_player_controller_advance_time"]

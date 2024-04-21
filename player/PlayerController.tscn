@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctfb60rssirxr"]
+[gd_scene load_steps=3 format=3 uid="uid://ctfb60rssirxr"]
 
 [ext_resource type="Script" path="res://player/PlayerController.gd" id="1_2htms"]
+[ext_resource type="PackedScene" uid="uid://b15ntxi042cgp" path="res://player/DirectionPicker.tscn" id="2_gxk3l"]
 
 [node name="PlayerController" type="Control"]
 layout_mode = 3
@@ -28,10 +29,23 @@ layout_mode = 2
 text = "Walk Left
 "
 
-[node name="Jump" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="JumpDirection" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_gxk3l")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Jump" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Jump"
 
+[node name="Wait" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Wait"
+
 [connection signal="pressed" from="VBoxContainer/WalkRight" to="." method="_on_walk_right_pressed"]
 [connection signal="pressed" from="VBoxContainer/WalkLeft" to="." method="_on_walk_left_pressed"]
-[connection signal="pressed" from="VBoxContainer/Jump" to="." method="_on_jump_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Jump" to="." method="_on_jump_pressed"]
+[connection signal="pressed" from="VBoxContainer/Wait" to="." method="_on_wait_pressed"]

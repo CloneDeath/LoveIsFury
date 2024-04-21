@@ -6,12 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5528"]
 size = Vector2(8, 26)
 
-[sub_resource type="Animation" id="Animation_7rgx1"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_aaym4"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame_coords")
+tracks/0/path = NodePath("Sprite:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,12 +21,12 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_aaym4"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_7rgx1"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame_coords")
+tracks/0/path = NodePath("Sprite:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +50,7 @@ script = ExtResource("1_28bx6")
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_p5528")
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 3
 position = Vector2(0, -16)
 texture = ExtResource("1_c5d7l")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqpt05ck1lwfw"]
 
-[ext_resource type="PackedScene" uid="uid://ctfb60rssirxr" path="res://player/PlayerController.tscn" id="1_4bxe8"]
+[ext_resource type="PackedScene" uid="uid://ctfb60rssirxr" path="res://player/controls/PlayerController.tscn" id="1_4bxe8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_77i0t"]
 [ext_resource type="PackedScene" uid="uid://dvc74cl5ndp5r" path="res://levels/DebugRoom.tscn" id="1_oby24"]
 [ext_resource type="Script" path="res://FollowCamera.gd" id="2_wbkq2"]

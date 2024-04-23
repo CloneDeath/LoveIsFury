@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctfb60rssirxr"]
+[gd_scene load_steps=6 format=3 uid="uid://ctfb60rssirxr"]
 
-[ext_resource type="Script" path="res://player/PlayerController.gd" id="1_2htms"]
-[ext_resource type="PackedScene" uid="uid://b15ntxi042cgp" path="res://player/DirectionPicker.tscn" id="2_gxk3l"]
+[ext_resource type="Script" path="res://player/controls/PlayerController.gd" id="1_2htms"]
+[ext_resource type="PackedScene" uid="uid://b15ntxi042cgp" path="res://player/controls/DirectionPicker.tscn" id="2_gxk3l"]
+[ext_resource type="PackedScene" uid="uid://h2kq2wg4lg7f" path="res://player/controls/ActionButton.tscn" id="2_ncpyy"]
+[ext_resource type="Script" path="res://player/controls/actions/RunButton.gd" id="3_defh7"]
+[ext_resource type="Script" path="res://player/controls/actions/JumpButton.gd" id="5_jqlmr"]
 
 [node name="PlayerController" type="HBoxContainer"]
 anchors_preset = 15
@@ -29,9 +32,10 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[node name="RunButton" type="Button" parent="Movement"]
+[node name="RunButton" parent="Movement" instance=ExtResource("2_ncpyy")]
 layout_mode = 2
 text = "Run"
+script = ExtResource("3_defh7")
 
 [node name="Jumping" type="HBoxContainer" parent="Movement"]
 layout_mode = 2
@@ -41,9 +45,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="Jump" type="Button" parent="Movement/Jumping"]
+[node name="JumpButton" parent="Movement/Jumping" instance=ExtResource("2_ncpyy")]
 layout_mode = 2
 text = "Jump"
+script = ExtResource("5_jqlmr")
 
 [node name="TurnAroundButton" type="Button" parent="Movement"]
 layout_mode = 2
@@ -53,7 +58,5 @@ text = "Turn Around"
 layout_mode = 2
 text = "Stop"
 
-[connection signal="pressed" from="Movement/RunButton" to="." method="_on_run_button_pressed"]
-[connection signal="pressed" from="Movement/Jumping/Jump" to="." method="_on_jump_pressed"]
 [connection signal="pressed" from="Movement/TurnAroundButton" to="." method="_on_turn_around_pressed"]
 [connection signal="pressed" from="Movement/StopButton" to="." method="_on_stop_button_pressed"]

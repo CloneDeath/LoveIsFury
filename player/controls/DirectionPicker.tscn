@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b15ntxi042cgp"]
 
-[ext_resource type="Script" path="res://player/DirectionPicker.gd" id="1_un8jx"]
+[ext_resource type="Script" path="res://player/controls/DirectionPicker.gd" id="1_un8jx"]
 
 [sub_resource type="Curve" id="Curve_ns5am"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.120879), 0.0, 0.0, 0, 0]

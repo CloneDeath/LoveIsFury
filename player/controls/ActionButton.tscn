@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://h2kq2wg4lg7f"]
+
+[ext_resource type="Script" path="res://player/controls/ActionButton.gd" id="1_1erfn"]
+
+[node name="ActionButton" type="Button" groups=["ActionButton"]]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Action"
+script = ExtResource("1_1erfn")

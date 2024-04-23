@@ -16,8 +16,8 @@ zoom = Vector2(5, 5)
 [node name="PlayerController" parent="Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("1_4bxe8")]
 offset_left = -94.0
 offset_top = -45.0
-offset_right = 6.0
-offset_bottom = 55.0
+offset_right = 9.0
+offset_bottom = 157.0
 scale = Vector2(0.2, 0.2)
 player = NodePath("../../DynamicEntities/Player")
 

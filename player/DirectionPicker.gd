@@ -37,10 +37,18 @@ func _gui_input(event):
 		_end = event.position;
 		_clamp();
 
-func _process(delta):
+func _ready():
+	_start = size / 2;
+	vector = Vector2.UP;7
+	queue_redraw();
+
+func _process(_delta):
 	_start = size / 2;
 	_clamp();
 
 func _clamp():
 	magnitude = clamp(magnitude, 0, 1);
 	_end = _end.clamp(Vector2(), size);
+
+func _draw():
+	self.draw_arc(size/2, _vector_scale, 0, TAU, 17, Color.WHITE);

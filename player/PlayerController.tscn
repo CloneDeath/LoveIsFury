@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://player/PlayerController.gd" id="1_2htms"]
 [ext_resource type="PackedScene" uid="uid://b15ntxi042cgp" path="res://player/DirectionPicker.tscn" id="2_gxk3l"]
 
-[node name="PlayerController" type="Control"]
-layout_mode = 3
+[node name="PlayerController" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,40 +11,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2htms")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="WalkRight" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Walk Right"
-
-[node name="WalkLeft" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Walk Left
-"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Movement" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="JumpDirection" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_gxk3l")]
+[node name="MovementLabel" type="Label" parent="Movement"]
+layout_mode = 2
+text = "Movement"
+horizontal_alignment = 1
+
+[node name="MoveSpeed" type="HSlider" parent="Movement"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 10.0
+step = 10.0
+value = 10.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[node name="MoveButton" type="Button" parent="Movement"]
+layout_mode = 2
+text = "Run"
+
+[node name="Jumping" type="HBoxContainer" parent="Movement"]
+layout_mode = 2
+
+[node name="JumpDirection" parent="Movement/Jumping" instance=ExtResource("2_gxk3l")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="Jump" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Jump" type="Button" parent="Movement/Jumping"]
 layout_mode = 2
 text = "Jump"
 
-[node name="Wait" type="Button" parent="VBoxContainer"]
+[node name="TurnAround" type="Button" parent="Movement"]
+layout_mode = 2
+text = "Turn Around"
+
+[node name="Wait" type="Button" parent="Movement"]
 layout_mode = 2
 text = "Wait"
 
-[connection signal="pressed" from="VBoxContainer/WalkRight" to="." method="_on_walk_right_pressed"]
-[connection signal="pressed" from="VBoxContainer/WalkLeft" to="." method="_on_walk_left_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Jump" to="." method="_on_jump_pressed"]
-[connection signal="pressed" from="VBoxContainer/Wait" to="." method="_on_wait_pressed"]
+[connection signal="pressed" from="Movement/MoveButton" to="." method="_on_move_button_pressed"]
+[connection signal="pressed" from="Movement/Jumping/Jump" to="." method="_on_jump_pressed"]
+[connection signal="pressed" from="Movement/TurnAround" to="." method="_on_turn_around_pressed"]
+[connection signal="pressed" from="Movement/Wait" to="." method="_on_wait_pressed"]

@@ -16,7 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_un8jx")
 
 [node name="Pointer" type="Line2D" parent="."]
-points = PackedVector2Array(143, 216, 189, 128)
+points = PackedVector2Array(576, 324, 576, 0)
 width = 5.0
 width_curve = SubResource("Curve_ns5am")
 joint_mode = 2

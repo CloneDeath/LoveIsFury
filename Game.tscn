@@ -1,25 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqpt05ck1lwfw"]
+[gd_scene load_steps=6 format=3 uid="uid://cqpt05ck1lwfw"]
 
 [ext_resource type="PackedScene" uid="uid://ctfb60rssirxr" path="res://player/PlayerController.tscn" id="1_4bxe8"]
 [ext_resource type="Script" path="res://Game.gd" id="1_77i0t"]
 [ext_resource type="PackedScene" uid="uid://dvc74cl5ndp5r" path="res://levels/DebugRoom.tscn" id="1_oby24"]
+[ext_resource type="Script" path="res://FollowCamera.gd" id="2_wbkq2"]
 [ext_resource type="PackedScene" uid="uid://cpnppa8xqclfr" path="res://player/Player.tscn" id="2_ypbkg"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("dynamicEntities")]
 script = ExtResource("1_77i0t")
 dynamicEntities = NodePath("DynamicEntities")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(114, 64)
-zoom = Vector2(5, 5)
-
-[node name="PlayerController" parent="Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("1_4bxe8")]
-offset_left = -94.0
-offset_top = -45.0
-offset_right = 9.0
-offset_bottom = 157.0
-scale = Vector2(0.2, 0.2)
-player = NodePath("../../DynamicEntities/Player")
 
 [node name="DebugRoom" parent="." instance=ExtResource("1_oby24")]
 
@@ -27,5 +16,20 @@ player = NodePath("../../DynamicEntities/Player")
 
 [node name="Player" parent="DynamicEntities" instance=ExtResource("2_ypbkg")]
 position = Vector2(32, 112)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(114, 100)
+offset = Vector2(0, -40)
+zoom = Vector2(5, 5)
+script = ExtResource("2_wbkq2")
+target = NodePath("../DynamicEntities/Player")
+
+[node name="PlayerController" parent="Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("1_4bxe8")]
+offset_left = -112.0
+offset_top = -103.0
+offset_right = 973.0
+offset_bottom = 102.0
+scale = Vector2(0.2, 0.2)
+player = NodePath("../../DynamicEntities/Player")
 
 [connection signal="advance_time" from="Camera2D/PlayerController" to="." method="_on_player_controller_advance_time"]

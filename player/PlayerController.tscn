@@ -29,7 +29,7 @@ rounded = true
 tick_count = 5
 ticks_on_borders = true
 
-[node name="MoveButton" type="Button" parent="Movement"]
+[node name="RunButton" type="Button" parent="Movement"]
 layout_mode = 2
 text = "Run"
 
@@ -45,15 +45,15 @@ layout_mode = 2
 layout_mode = 2
 text = "Jump"
 
-[node name="TurnAround" type="Button" parent="Movement"]
+[node name="TurnAroundButton" type="Button" parent="Movement"]
 layout_mode = 2
 text = "Turn Around"
 
-[node name="Wait" type="Button" parent="Movement"]
+[node name="StopButton" type="Button" parent="Movement"]
 layout_mode = 2
-text = "Wait"
+text = "Stop"
 
-[connection signal="pressed" from="Movement/MoveButton" to="." method="_on_move_button_pressed"]
+[connection signal="pressed" from="Movement/RunButton" to="." method="_on_run_button_pressed"]
 [connection signal="pressed" from="Movement/Jumping/Jump" to="." method="_on_jump_pressed"]
-[connection signal="pressed" from="Movement/TurnAround" to="." method="_on_turn_around_pressed"]
-[connection signal="pressed" from="Movement/Wait" to="." method="_on_wait_pressed"]
+[connection signal="pressed" from="Movement/TurnAroundButton" to="." method="_on_turn_around_pressed"]
+[connection signal="pressed" from="Movement/StopButton" to="." method="_on_stop_button_pressed"]

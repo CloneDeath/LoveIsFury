@@ -8,12 +8,11 @@ func _on_jump_pressed():
 	player.jump(%JumpDirection.vector);
 	advance_time.emit(0.1);
 
-func _on_wait_pressed():
+func _on_stop_button_pressed():
 	advance_time.emit(0.1);
 
-func _on_move_button_pressed():
+func _on_run_button_pressed():
 	var speed = %MoveSpeed.value / 100.0;
-	print(speed);
 	player.move_forward(speed);
 	advance_time.emit(0.1);
 

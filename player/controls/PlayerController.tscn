@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctfb60rssirxr"]
+[gd_scene load_steps=8 format=3 uid="uid://ctfb60rssirxr"]
 
 [ext_resource type="Script" path="res://player/controls/PlayerController.gd" id="1_2htms"]
 [ext_resource type="PackedScene" uid="uid://b15ntxi042cgp" path="res://player/controls/DirectionPicker.tscn" id="2_gxk3l"]
 [ext_resource type="PackedScene" uid="uid://h2kq2wg4lg7f" path="res://player/controls/ActionButton.tscn" id="2_ncpyy"]
 [ext_resource type="Script" path="res://player/controls/actions/RunButton.gd" id="3_defh7"]
 [ext_resource type="Script" path="res://player/controls/actions/JumpButton.gd" id="5_jqlmr"]
+[ext_resource type="Script" path="res://player/controls/actions/TurnAroundButton.gd" id="6_j8tar"]
+[ext_resource type="Script" path="res://player/controls/actions/StopButton.gd" id="7_ycfik"]
 
 [node name="PlayerController" type="HBoxContainer"]
 anchors_preset = 15
@@ -29,7 +31,7 @@ min_value = 10.0
 step = 10.0
 value = 10.0
 rounded = true
-tick_count = 5
+tick_count = 4
 ticks_on_borders = true
 
 [node name="RunButton" parent="Movement" instance=ExtResource("2_ncpyy")]
@@ -50,13 +52,14 @@ layout_mode = 2
 text = "Jump"
 script = ExtResource("5_jqlmr")
 
-[node name="TurnAroundButton" type="Button" parent="Movement"]
+[node name="TurnAroundButton" parent="Movement" instance=ExtResource("2_ncpyy")]
 layout_mode = 2
 text = "Turn Around"
+script = ExtResource("6_j8tar")
 
-[node name="StopButton" type="Button" parent="Movement"]
+[node name="StopButton" parent="Movement" instance=ExtResource("2_ncpyy")]
 layout_mode = 2
 text = "Stop"
+script = ExtResource("7_ycfik")
 
-[connection signal="pressed" from="Movement/TurnAroundButton" to="." method="_on_turn_around_pressed"]
-[connection signal="pressed" from="Movement/StopButton" to="." method="_on_stop_button_pressed"]
+[connection signal="value_changed" from="Movement/MoveSpeed" to="Movement/RunButton" method="_on_move_speed_value_changed"]

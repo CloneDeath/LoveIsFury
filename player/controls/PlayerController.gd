@@ -12,11 +12,3 @@ func _ready():
 func _on_action_button_pressed(actionButton: ActionButton):
 	actionButton.execute(player);
 	advance_time.emit(0.1);
-
-func _on_stop_button_pressed():
-	advance_time.emit(0.1);
-
-func _on_turn_around_pressed():
-	player.stop();
-	player.turn_around();
-	advance_time.emit(0.1);

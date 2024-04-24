@@ -39,7 +39,7 @@ func _gui_input(event):
 
 func _ready():
 	_start = size / 2;
-	vector = Vector2.UP;7
+	vector = Vector2.UP;
 	queue_redraw();
 
 func _process(_delta):

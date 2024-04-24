@@ -7,6 +7,9 @@ var labels = {
 	10: "Walk"
 };
 
+func _ready():
+	_on_move_speed_value_changed(%MoveSpeed.value);
+
 func execute(player: Player):
 	var speed = %MoveSpeed.value / 100.0;
 	player.move_forward(speed);

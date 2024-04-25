@@ -11,8 +11,13 @@ var facing = 1;
 var do_move := 0.0;
 var do_jump := false;
 var do_jump_vector := Vector2.ZERO;
+var do_turn_around := false;
 
 func _physics_process(delta):
+	if (do_turn_around):
+		do_turn_around = false;
+		facing *= -1;
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -29,8 +34,10 @@ func _physics_process(delta):
 	move_and_slide();
 	%Sprite.scale.x = facing;
 
-func stop():
+func clear():
 	do_move = 0;
+	do_jump = false;
+	do_turn_around = false;
 
 func move_forward(speed: float):
 	do_move = speed;
@@ -40,4 +47,4 @@ func jump(vector: Vector2):
 	do_jump_vector = vector;
 
 func turn_around():
-	facing *= -1;
+	do_turn_around = true;

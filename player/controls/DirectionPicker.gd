@@ -1,5 +1,8 @@
 @tool
 extends Control
+class_name DirectionPicker
+
+signal value_changed(Vector2);
 
 var magnitude: float:
 	get:
@@ -33,9 +36,11 @@ func _gui_input(event):
 	if (event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT):
 		_end = event.position;
 		_clamp();
+		value_changed.emit(vector);
 	if (event is InputEventMouseMotion and event.button_mask & MOUSE_BUTTON_LEFT):
 		_end = event.position;
 		_clamp();
+		value_changed.emit(vector);
 
 func _ready():
 	_start = size / 2;

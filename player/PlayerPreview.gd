@@ -13,6 +13,7 @@ func reset():
 	do_move = player.do_move;
 	do_jump = player.do_jump;
 	do_jump_vector = player.do_jump_vector;
+	do_turn_around = player.do_turn_around;
 	process_mode = Node.PROCESS_MODE_INHERIT;
 
 func freeze():

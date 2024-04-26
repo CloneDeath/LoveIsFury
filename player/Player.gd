@@ -1,11 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 800.0
-const JUMP_VELOCITY = 400.0
+func get_gravity() -> float:
+	return ProjectSettings.get_setting("physics/2d/default_gravity");
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity");
+func get_move_speed() -> float:
+	return 800.0;
+
+func get_jump_speed() -> float:
+	return 400.0;
 
 var facing = 1;
 var do_move := 0.0;
@@ -19,17 +22,17 @@ func _physics_process(delta):
 		facing *= -1;
 
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += get_gravity() * delta
 
 	if (is_on_floor()):
 		if do_jump:
 			do_jump = false;
-			velocity += do_jump_vector * JUMP_VELOCITY;
+			velocity = do_jump_vector * get_jump_speed();
 		elif abs(do_move) > 0:
 			var direction = do_move * facing;
-			velocity.x = direction * SPEED
+			velocity.x = direction * get_move_speed()
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, get_move_speed())
 
 	move_and_slide();
 	%Sprite.scale.x = facing;
